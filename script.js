@@ -139,11 +139,10 @@ function initializeVideoPlayers() {
     const videos = document.querySelectorAll('video');
     
     videos.forEach((video, index) => {
-        // Ensure video is properly configured for autoplay
+        // Ensure video is properly configured (no autoplay - controlled by scroll)
         video.preload = 'auto';
         video.setAttribute('playsinline', '');
-        video.setAttribute('autoplay', '');
-        video.setAttribute('muted', ''); // Required for autoplay in most browsers
+        video.setAttribute('muted', ''); // Start muted for better browser compatibility
         video.muted = true; // Ensure muted property is set
         
         // Add loading indicator
@@ -159,18 +158,8 @@ function initializeVideoPlayers() {
         video.addEventListener('canplay', function() {
             console.log(`Video ${index + 1} can play`);
             hideVideoLoading(this);
-            // Try to play the video when it's ready
-            this.play().then(() => {
-                // After video starts playing, try to unmute after a short delay
-                setTimeout(() => {
-                    this.muted = false;
-                    console.log(`Video ${index + 1} unmuted`);
-                }, 1000);
-            }).catch(e => {
-                console.log(`Autoplay failed for video ${index + 1}:`, e);
-                // If autoplay fails, show a play button or message
-                showPlayButton(this, index + 1);
-            });
+            // Don't autoplay immediately - wait for scroll-based trigger
+            console.log(`Video ${index + 1} ready but waiting for scroll trigger`);
         });
         
         video.addEventListener('canplaythrough', function() {
@@ -343,13 +332,25 @@ function addScrollVideoControl() {
             const video = entry.target;
             
             if (entry.isIntersecting) {
-                // Video is in view - play if it was paused by scroll
-                if (video.paused && video.dataset.pausedByScroll === 'true') {
+                // Video is in view
+                if (video.paused) {
+                    // Start playing the video when it comes into view
                     video.play().then(() => {
-                        console.log('Video resumed due to scroll into view');
+                        console.log('Video started playing due to scroll into view');
                         video.dataset.pausedByScroll = 'false';
+                        
+                        // Unmute after a short delay if this is the first play
+                        if (video.dataset.hasPlayedBefore !== 'true') {
+                            setTimeout(() => {
+                                video.muted = false;
+                                console.log('Video unmuted after first play');
+                                video.dataset.hasPlayedBefore = 'true';
+                            }, 1000);
+                        }
                     }).catch(e => {
-                        console.log('Failed to resume video:', e);
+                        console.log('Failed to play video on scroll:', e);
+                        // If autoplay fails, show play button
+                        showPlayButton(video, Array.from(videos).indexOf(video) + 1);
                     });
                 }
             } else {
@@ -362,14 +363,15 @@ function addScrollVideoControl() {
             }
         });
     }, {
-        threshold: 0.5, // Video needs to be at least 50% visible
-        rootMargin: '0px 0px -100px 0px' // Add some margin to trigger earlier
+        threshold: 0.3, // Video needs to be at least 30% visible to start playing
+        rootMargin: '0px 0px -50px 0px' // Trigger when video is getting close to view
     });
     
     // Observe all videos
     videos.forEach(video => {
         observer.observe(video);
         video.dataset.pausedByScroll = 'false';
+        video.dataset.hasPlayedBefore = 'false';
     });
     
     // Store observer reference for cleanup if needed
