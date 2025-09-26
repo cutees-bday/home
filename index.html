@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Cutee!</title>
+    <link rel="icon" type="image/png" href="video/1.png">
+    <link rel="shortcut icon" type="image/png" href="video/1.png">
+    <link rel="apple-touch-icon" href="video/1.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="emoji-styles.css">
+</head>
+<body>
+    <!-- Password Protection Screen -->
+    <div id="password-screen" class="password-screen">
+        <div class="password-box">
+            <h2>Enter Code</h2>
+            <form id="password-form">
+                <input type="password" id="password-input" placeholder="Birthday code" required>
+                <button type="submit">Enter</button>
+            </form>
+            <div id="error-message" class="error-message"></div>
+        </div>
+    </div>
+
+    <!-- Main Birthday Content -->
+    <div id="main-content" class="main-content hidden">
+        
+        <!-- Heading Section -->
+        <div class="heading-section">
+            <h1 class="main-heading">Happy Birthday Cuteee!</h1>
+            <p class="birthday-subheading">Hope your special day is filled with<br>happiness and joy with good vibes! ✨🎀👻</p>
+        </div>
+
+        <!-- Image Section -->
+        <div class="image-section">
+            <div class="image-item">
+                <img src="video/o2.jpg" alt="Birthday Image" />
+            </div>
+        </div>
+
+        <!-- Video Section -->
+        <div class="video-section">
+            <div class="video-item">
+                <video controls autoplay muted playsinline preload="auto">
+                    <source src="video/IMG_0608.MP4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+/* Blast Animation Container */
+.blast-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 15000;
+    overflow: hidden;
+}
+
+/* Blast Items */
+.blast-item {
+    position: fixed;
+    user-select: none;
+    pointer-events: none;
+    will-change: transform, left, top, opacity;
+}
+
+/* Image Section Styles - No Hover Effects */
+.image-section {
+    margin-bottom: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-item {
+    margin-bottom: 40px;
+    text-align: center;
+    padding: 24px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #e8e8e8;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-item img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Video Section Styles - No Hover Effects */
+.video-section {
+    margin-bottom: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-item {
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    text-align: center;
+    padding: 24px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #e8e8e8;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.video-item video {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments */
+@media (min-width: 1200px) {
+    .image-item img {
+        max-width: 550px;
+    }
+    
+    .video-item video {
+        max-width: 550px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .image-item img {
+        max-width: 520px;
+    }
+    
+    .video-item video {
+        max-width: 520px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .image-item {
+        padding: 22px;
+        margin-bottom: 35px;
+    }
+    
+    .video-item {
+        padding: 22px;
+        margin-bottom: 35px;
+    }
+    
+    .image-item img {
+        max-width: 480px;
+    }
+    
+    .video-item video {
+        max-width: 480px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .image-item {
+        padding: 20px;
+        margin-bottom: 32px;
+    }
+    
+    .video-item {
+        padding: 20px;
+        margin-bottom: 32px;
+    }
+    
+    .image-item img {
+        max-width: 100%;
+    }
+    
+    .video-item video {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 575px) {
+    .image-item {
+        padding: 18px;
+        margin-bottom: 28px;
+    }
+    
+    .video-item {
+        padding: 18px;
+        margin-bottom: 28px;
+    }
+}
+
+@media (min-width: 375px) and (max-width: 479px) {
+    .image-item {
+        padding: 16px;
+        margin-bottom: 25px;
+    }
+    
+    .video-item {
+        padding: 16px;
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 374px) {
+    .image-item {
+        padding: 14px;
+        margin-bottom: 22px;
+    }
+    
+    .video-item {
+        padding: 14px;
+        margin-bottom: 22px;
+    }
+}
+
+@media (max-width: 319px) {
+    .image-item {
+        padding: 12px;
+        margin-bottom: 20px;
+    }
+    
+    .video-item {
+        padding: 12px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .blast-item {
+        font-size: 16px !important;
+    }
+    
+    .image-item {
+        padding: 20px;
+    }
+    
+    .image-item img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .blast-item {
+        font-size: 14px !important;
+    }
+    
+    .image-item {
+        padding: 16px;
+    }
+}
+
+/* Landscape Orientation for Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .image-item {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .video-item {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+}
