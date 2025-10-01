@@ -1,5 +1,5 @@
 // Password configuration
-const CORRECT_PASSWORD = "2010"; // Change this to your desired password
+const CORRECT_PASSWORD = "3666"; // Change this to your desired password
 const SESSION_KEY = "videoGalleryAccess";
 const SESSION_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
